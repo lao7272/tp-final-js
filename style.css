@@ -1,0 +1,55 @@
+/* GENERALES */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+/* HEADER */
+.header{
+    width: 100%;
+    background-color: #ff0000;
+    padding: 20px 0;    
+}
+.header nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 15px 0 5px;
+}
+.pokemonIcon img{
+    width: 60px;
+}
+.links{
+    display: flex;
+    align-items: center;
+}
+
+.header li{
+    display: inline-block;
+}
+.header a{
+    color: #000;
+}
+.cart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.buttonCart{
+    padding: 10px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    background-color: #fff;
+}
+.buttonCart i {
+    color: #000;
+}
+
