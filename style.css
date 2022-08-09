@@ -6,6 +6,9 @@
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
+body{
+    background-image: url(img/pokeballs-bg.webp);
+}
 li{
     list-style: none;
 }
@@ -52,4 +55,52 @@ a{
 .buttonCart i {
     color: #000;
 }
+.pokemons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 80%;
+    margin: 0 auto;
+    gap: 15px;
+}
+.pokemonCard{
+    background: #fff;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+.cardHeader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cardHeader h3{
+    text-transform: capitalize;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+.cardShop{
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cardShop button{
+    border: none;
+    padding: 10px 7px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.cardShop i{
+    cursor: pointer;
+    padding: 8px;
+}
+
+
 
