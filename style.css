@@ -7,7 +7,8 @@
     font-family: 'Lato', sans-serif;
 }
 body{
-    background-image: url(img/pokeballs-bg.webp);
+    background: url(img/pokeballs-bg.webp);
+    background-attachment: fixed;
 }
 li{
     list-style: none;
@@ -81,7 +82,15 @@ a{
 .cardHeader h3{
     text-transform: capitalize;
     margin-top: 10px;
-    margin-bottom: 4px;
+}
+.cardHeader h5 {
+    padding: 5px;
+    background: #ccc;
+    border-radius: 4px;
+    margin: 6px 0 10px 0;
+}
+.cardInfo img {
+    width: 100px;
 }
 .cardShop{
     margin: 0 auto;
@@ -91,6 +100,7 @@ a{
     justify-content: space-between;
     align-items: center;
 }
+
 .cardShop button{
     border: none;
     padding: 10px 7px;
@@ -103,4 +113,40 @@ a{
 }
 
 
+/* Cart */
+.cartPopup {
+    border-radius: 0;
+    margin: 0;
+}
+.containerCartItem{
+    width: 100%;
+    border: 1px solid #000;
+    display: flex;
+    
+}
+.cartImg{
+    width: 20%;
+    border: 1px solid blue;
+}
+.cartImg img{
+    width: 100%;
+    
+}
+.cartInfo{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blueviolet;
+}
+.cartDelete{
+    width: 20%;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cartDelete i{
+    cursor: pointer;
+    color: #000;
+}
 
