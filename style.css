@@ -19,7 +19,7 @@ a{
 /* HEADER */
 .header{
     width: 100%;
-    background-color: #ff0000;
+    background: linear-gradient(to right, #f80404, #e80404, #d10303, #bf0303, #ac0303);
     padding: 20px 0;    
 }
 .header nav{
@@ -149,4 +149,18 @@ a{
     cursor: pointer;
     color: #000;
 }
-
+.btns{
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
+.btnPag{
+    cursor: pointer;
+    border-radius: none;
+    padding: 10px;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    background: none;
+    border: none;
+    border-radius: 0;
+}
