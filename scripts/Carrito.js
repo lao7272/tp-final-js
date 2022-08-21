@@ -8,6 +8,7 @@ const addPokToCart = (pok) => {
     if (pokCart){
         pokCart.quant++;
     } else {
+        pok.quant = 1;
         cartArr.push(pok);
     }
 
@@ -24,14 +25,27 @@ divPokemons.addEventListener('click', (e)=>{
         arrPok.forEach((pok, i) => {
             if (e.target.id === `buyPok${pok.id}`) {
                 Swal.fire({
-                    title: '<strong><h3>Carrito de compras </h3></strong>',
+                    title: '<strong><h3>Tu compra </h3></strong>',
                     html:
-                        `<img src="${pok.img}">`,
+                        `
+                        <div class="buyPokContainer">
+                            <h3>${pok.name}</h3>
+                            <img src="${pok.img}" alt="${pok.name}">
+                            <p>Total: $${pok.price}</p>
+                        </div>
+                        `,
                     showCancelButton: true,
                     cancelButtonText: 'Cancelar',
                     confirmButtonText: 'Comprar',
                     focusConfirm: false,
-                    width: '70%'                    
+                    width: '30%',
+                    background: "linear-gradient(to top right, #ff8703,#ff4318,#f80404)", 
+                    color: "#000",
+                    buttonsStyling: false,
+                    customClass:{
+                        confirmButton: 'btn',
+                        cancelButton: 'btn',
+                        }                    
                     })
                     .then((result) => {
                         if (result.isConfirmed) {
@@ -80,7 +94,7 @@ buttonCart.addEventListener('click', () => {
         html:
             `
             <div class="containerCart" id="divItemsCart"></div>
-            <div class="totalCart" id="totalCart"></div>
+            <div id="totalCart"></div>
             `,
         cancelButtonText: 'Cancelar',
         confirmButtonText: 'Comprar',
@@ -90,7 +104,6 @@ buttonCart.addEventListener('click', () => {
         position: 'bottom-end',
         buttonsStyling: false,
         customClass:{
-            popup: 'cartPopup',
             confirmButton: 'btn',
             cancelButton: 'btn',
         }
@@ -127,6 +140,7 @@ buttonCart.addEventListener('click', () => {
         
     });
 
+    /* Cartas del carrito de compras */ 
     const divItemsCart = document.getElementById('divItemsCart');
     const totalCart = document.getElementById('totalCart');
 
@@ -140,10 +154,15 @@ buttonCart.addEventListener('click', () => {
                 <img src="${pok.img}" alt="Imagen de ${pok.name}">
             </div>
             <div class="cartInfo">
-                <h3>${pok.name}</h3>
-                <h4>Precio:</h4>
-                <strong><p id="pokPrice${i}">$${pok.price * pok.quant}</p></strong>
-                <p>Cant: </p><input class="quantityCart" id="quantityCart${pok.id}" min="1" name="form-0-quantity" value="${pok.quant}" type="number">
+                <h3 class="cartTitleItem">${pok.name}</h3>
+                <div class="cartPriceItem">
+                    <h4>Precio:</h4>
+                    <strong><p id="pokPrice${i}">$${pok.price * pok.quant}</p></strong>
+                </div>
+                <div class="cartQuantItem">
+                    <p>Cant: </p>
+                    <input class="quantityCart" id="quantityCart${pok.id}" min="1" name="form-0-quantity" value="${pok.quant}" type="number" onfocus="this.blur()">
+                </div>
             </div>
             <div class="cartDelete">
                 <i class="fa-solid fa-trash-can fa-xl" id="deletePok${pok.name}"></i>
@@ -151,7 +170,9 @@ buttonCart.addEventListener('click', () => {
         </div>
         `
     });
+
     /* Calculo del total del carrito */
+
     if (pokeStorageArr.length == 0) {
         totalCart.innerHTML = `
             <div class="emptyCart">

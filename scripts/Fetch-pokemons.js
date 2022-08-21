@@ -14,7 +14,7 @@ async function fetchPok (url){
                 .then(res => res.json())
                 .then(({id, name, sprites, types}) => {
 
-                    let pok = new Pokemon(id, name, sprites.other.dream_world.front_default, 1, types, 20);
+                    let pok = new Pokemon(id, name, sprites.other.dream_world.front_default, 1, 20);
                     const pokCart = arrPok.find(poke => poke.id == pok.id);
                     if (!pokCart){
                         arrPok.push(pok);
@@ -24,7 +24,7 @@ async function fetchPok (url){
                         <div class="pokemonCard" id="pokemon${id}">
         
                             <div class="cardHeader">
-                                <h3>${name} ${types[0].type.name}</h3>
+                                <h3>${name} </h3>
                                 <h5>#${(id).toString().padStart(3, 0)}</h5>
                             </div>
                             <div class="cardInfo">

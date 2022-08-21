@@ -146,14 +146,7 @@ a{
     padding: 8px;
 }
 
-
-/* Cart */
-/* .cartPopup {
-    border-radius: 0;
-    margin: 0;
-    background: #f3b629;
-    color: #000;
-} */
+/* CART */
 
 .containerCartItem{
     width: 100%;
@@ -166,15 +159,17 @@ a{
 }
 .cartImg{
     width: 20%;
+    margin-right: 15px;
+    margin-top: 10px;
 }
 .cartImg img{
     width: 100%;
-    
 }
 .cartInfo{
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 .cartInfo h3{
     text-transform: capitalize;
@@ -183,24 +178,65 @@ a{
     background: none;
     border: none;
     color: #000;
-    width: 30px;
+    width: 35px;
+    outline:none;
 } 
 .cartDelete{
-    width: 20%;
+    width: 10%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 .cartDelete i{ 
     cursor: pointer;
     color: #000;
 }
+.cartTitleItem{
+    align-self: flex-start;
+    border-bottom: #000 1.3px solid;
+}
+.cartPriceItem{
+    display: flex;
+    justify-content: space-between;
+}
+.cartQuantItem{
+    display: flex;
+    justify-content: space-between;
+}
+.totalCart{
+    margin-top: 15px;    
+    width: 100%;
+}
+.totalCart h3{
+    text-align: left;
+}
+/* POKEMON BUY */
+.buyPokContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.buyPokContainer h3{
+    font-size: 27px;
+    width: fit-content;
+    text-transform: capitalize;
+    padding: 5px;
+    border-bottom: #000 1.3px solid;
 
-
+}
+.buyPokContainer img{
+    width: 50%;
+    margin: 15px;
+}
+/* BTNS */
 .btns{
     width: 100%;
     margin-bottom: 15px;
     margin-left: 15px;
 }
+
+
 
