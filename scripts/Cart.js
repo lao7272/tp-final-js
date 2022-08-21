@@ -38,7 +38,7 @@ divPokemons.addEventListener('click', (e)=>{
                     cancelButtonText: 'Cancelar',
                     confirmButtonText: 'Comprar',
                     focusConfirm: false,
-                    width: '30%',
+                    width: '70vh',
                     background: "linear-gradient(to top right, #ff8703,#ff4318,#f80404)", 
                     color: "#000",
                     buttonsStyling: false,
@@ -141,7 +141,7 @@ buttonCart.addEventListener('click', () => {
     });
 
     /* Cartas del carrito de compras */ 
-    
+
     const divItemsCart = document.getElementById('divItemsCart');
     const totalCart = document.getElementById('totalCart');
 
