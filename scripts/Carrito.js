@@ -32,6 +32,21 @@ divPokemons.addEventListener('click', (e)=>{
                     confirmButtonText: 'Comprar',
                     focusConfirm: false,
                     width: '70%'                    
+                    })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Tu compra ha sido realizada exitosamente',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    customClass:{
+                                        popup: 'successPopup'
+                                    } 
+                                });                            
+                        } 
+                        
                     });
             }
         });
@@ -41,6 +56,16 @@ divPokemons.addEventListener('click', (e)=>{
             if (e.target.id === `addCart${pok.id}`) {
                 addPokToCart(pok)
                 localStorage.setItem('cartStorage', JSON.stringify(cartArr));
+                Toastify({
+                    text: `Producto agregado al carrito`,
+                    duration: 1000,
+                    className: "info",
+                    gravity: "bottom",
+                    position:"left",
+                    style: {
+                    background: "linear-gradient(to top right, #ff8703,#ff4318,#f80404)",
+                    }
+                }).showToast();
             }
         });
     }
@@ -63,28 +88,41 @@ buttonCart.addEventListener('click', () => {
         focusConfirm: false,
         grow: 'column', 
         position: 'bottom-end',
+        buttonsStyling: false,
         customClass:{
-            container: 'cartPopup',
             popup: 'cartPopup',
-            // confirmButton: '',
-            // cancelButton: ''
+            confirmButton: 'btn',
+            cancelButton: 'btn',
         }
-        
         
     })
     .then((result) => {
         if (result.isConfirmed) {
-            
-            Swal.fire({
-                title: '<strong><h3>Carrito de compras </h3></strong>',
-                html:
-                    `<h5>No se si es una buena idea</h5>`,
-                showCancelButton: true,
-                cancelButtonText: 'Cancelar',
-                confirmButtonText: 'Comprar',
-                focusConfirm: false,
-                width: '70%'  
-            });
+            if(cartArr.length != 0){
+                cartArr = [];
+                localStorage.setItem('cartStorage', JSON.stringify(cartArr))
+                
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Tu compra ha sido realizada exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    customClass:{
+                        popup: 'successPopup'
+                    } 
+                });
+            } else {
+                Swal.fire({
+                    position: 'center',
+                    title: 'Tienes que agregar un producto al carritos',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    customClass:{
+                        popup: 'successPopup'
+                    } 
+                });
+            }
         } 
         
     });
@@ -104,8 +142,8 @@ buttonCart.addEventListener('click', () => {
             <div class="cartInfo">
                 <h3>${pok.name}</h3>
                 <h4>Precio:</h4>
-                <strong><p>$${pok.price}</p></strong>
-                <p>Cant: ${pok.quant}</p>
+                <strong><p id="pokPrice${i}">$${pok.price * pok.quant}</p></strong>
+                <p>Cant: </p><input class="quantityCart" id="quantityCart${pok.id}" min="1" name="form-0-quantity" value="${pok.quant}" type="number">
             </div>
             <div class="cartDelete">
                 <i class="fa-solid fa-trash-can fa-xl" id="deletePok${pok.name}"></i>
@@ -113,21 +151,35 @@ buttonCart.addEventListener('click', () => {
         </div>
         `
     });
+    /* Calculo del total del carrito */
     if (pokeStorageArr.length == 0) {
         totalCart.innerHTML = `
-        <div>
-        <h3> El Carrito Esta Vacio</h3>                    
-        </div>
+            <div class="emptyCart">
+                <h3> El Carrito Esta Vacio</h3>                    
+            </div>
         `;
     } else {
         totalCart.innerHTML = `
-                    <div>
-                        <h3> Total: ${calcTotalPrice(pokeStorageArr)}</h3>                    
-                    </div>
+                <div class="totalCart">
+                    <h3> Total: $${calcTotalPrice(pokeStorageArr)}</h3>                    
+                </div>
         `;
     }
+    /* Evento del input number */
+    pokeStorageArr.forEach((pok, i) => {
+        document.getElementById(`quantityCart${pok.id}`).addEventListener('input', (e)=>{
+            cartArr[i].quant = parseFloat(e.data);
+            localStorage.setItem('cartStorage', JSON.stringify(cartArr));
+            document.getElementById(`pokPrice${i}`).innerHTML =  cartArr[i].quant * cartArr[i].price;
+            totalCart.innerHTML = `
+                <div class="totalCart">
+                    <h3> Total: $${calcTotalPrice(cartArr)}</h3>                    
+                </div>
+            `;
+        });
+    });
     
-    
+    /* Evento click del array (boton de delete)*/ 
     pokeStorageArr.forEach((pok, i) => {  
         divItemsCart.addEventListener('click', (e) => {
             if (e.target && e.target.tagName === "I") {
@@ -138,15 +190,15 @@ buttonCart.addEventListener('click', () => {
 
                     if (cartArr.length == 0) {
                         totalCart.innerHTML = `
-                        <div>
-                        <h3> El Carrito Esta Vacio</h3>                    
-                        </div>
+                            <div class="emptyCart">
+                                <h3> El Carrito Esta Vacio</h3>                    
+                            </div>
                         `;
                     } else {
                         totalCart.innerHTML = `
-                                    <div>
-                                        <h3> Total: ${calcTotalPrice(cartArr)}</h3>                    
-                                    </div>
+                            <div class="totalCart">
+                                <h3> Total: $${calcTotalPrice(cartArr)}</h3>                    
+                            </div>
                         `;
                     }                      
                 }
@@ -156,8 +208,6 @@ buttonCart.addEventListener('click', () => {
             
         });
     });
-    
-    
 });
 
 

@@ -31,12 +31,11 @@ async function fetchPok (url){
                                 <img src="${sprites.other.dream_world.front_default}" alt="imagen de ${name}">
                             </div>
                             <div class="cardShop" id="cardShop">
-                                <div>
-                                    <h3>Precio:</h3>
+                                <div class="cardPrice">
                                     <strong><p> $20</p></strong>
                                 </div>
                                 <div>
-                                    <button id="buyPok${id}">Comprar</button>
+                                    <button class="btn" id="buyPok${id}">Comprar</button>
                                     <i class="fa-solid fa-cart-plus fa-lg" id="addCart${id}"></i>
                                 </div>
                                         

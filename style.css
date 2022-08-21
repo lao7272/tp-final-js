@@ -7,7 +7,7 @@
     font-family: 'Lato', sans-serif;
 }
 body{
-    background: url(img/pokeballs-bg.webp);
+    background: url(img/pokeballs-wallpaper2.jpg);
     background-attachment: fixed;
 }
 li{
@@ -18,8 +18,8 @@ a{
 }
 /* HEADER */
 .header{
-    width: 100%;
-    background: linear-gradient(to right, #f80404, #e80404, #d10303, #bf0303, #ac0303);
+    width: 100vw;    
+    background: #f80404/*linear-gradient(to right, #f80404, #e80404, #d10303, #bf0303, #ac0303)*/; 
     padding: 20px 0;    
 }
 .header nav{
@@ -47,31 +47,46 @@ a{
     justify-content: center;
 }
 .buttonCart{
-    padding: 10px;
+    background: none;
     border: none;
     border-radius: 100px;
     cursor: pointer;
-    background-color: #fff;
+    margin-right: 20px;
 }
 .buttonCart i {
     color: #000;
 }
+/* MAIN */
+.containerPokemons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.containerPokemons h1{
+    width: fit-content;
+    padding: 5px 10px;
+    text-align: center;
+    border-bottom: 1.4px solid #fff;    
+    color: #fff;
+}
 .pokemons{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
     margin: 0 auto;
-    gap: 15px;
 }
 .pokemonCard{
-    background: #fff;
+    width: 270px;
+    background: linear-gradient(to top right, #ff8703,#ff4318,#f80404);
     margin: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #000;
     border-radius: 4px;
+    color: #000;
 }
 .cardHeader{
     display: flex;
@@ -82,15 +97,25 @@ a{
 .cardHeader h3{
     text-transform: capitalize;
     margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bolder;
+    border-bottom: #000 .5px solid;
 }
 .cardHeader h5 {
-    padding: 5px;
-    background: #ccc;
-    border-radius: 4px;
+    font-weight: 600;
+    padding-right: 3px;
     margin: 6px 0 10px 0;
+    border-bottom: #000 .5px solid;
+}
+.cardInfo{
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .cardInfo img {
     width: 100px;
+    margin: 10px 0;
 }
 .cardShop{
     margin: 0 auto;
@@ -101,12 +126,21 @@ a{
     align-items: center;
 }
 
-.cardShop button{
-    border: none;
+.cardPrice{
+    display: flex;
+}
+
+.btn{
+    background: none;
     padding: 10px 7px;
+    border: 1.4px solid #000;
     border-radius: 3px;
+    font-weight: 600;
+    color: #000;
+    margin: 0 3px;
     cursor: pointer;
 }
+
 .cardShop i{
     cursor: pointer;
     padding: 8px;
@@ -114,19 +148,24 @@ a{
 
 
 /* Cart */
-.cartPopup {
+/* .cartPopup {
     border-radius: 0;
     margin: 0;
-}
+    background: #f3b629;
+    color: #000;
+} */
+
 .containerCartItem{
     width: 100%;
+    padding: 5px 17px;
+    color:#000;
+    background: linear-gradient(to top right, #ff8703,#ff4318,#f80404);
     border: 1px solid #000;
     display: flex;
     
 }
 .cartImg{
     width: 20%;
-    border: 1px solid blue;
 }
 .cartImg img{
     width: 100%;
@@ -136,31 +175,32 @@ a{
     width: 60%;
     display: flex;
     flex-direction: column;
-    border: 1px solid blueviolet;
 }
+.cartInfo h3{
+    text-transform: capitalize;
+}
+.quantityCart{
+    background: none;
+    border: none;
+    color: #000;
+    width: 30px;
+} 
 .cartDelete{
     width: 20%;
-    border: 1px solid red;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    margin-right: 10px;
 }
-.cartDelete i{
+.cartDelete i{ 
     cursor: pointer;
     color: #000;
 }
+
+
 .btns{
+    width: 100%;
     margin-bottom: 15px;
     margin-left: 15px;
 }
-.btnPag{
-    cursor: pointer;
-    border-radius: none;
-    padding: 10px;
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
-    background: none;
-    border: none;
-    border-radius: 0;
-}
+
