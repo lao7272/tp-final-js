@@ -60,6 +60,7 @@ next.addEventListener('click', () => {
     startPoint += 9;
     divPokemons.innerHTML = "";
     fetchEveryPok(startPoint, limit);
+
 });
 prev.addEventListener('click', () => {
     if (startPoint != 1) {

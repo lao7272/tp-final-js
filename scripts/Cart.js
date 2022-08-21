@@ -141,6 +141,7 @@ buttonCart.addEventListener('click', () => {
     });
 
     /* Cartas del carrito de compras */ 
+    
     const divItemsCart = document.getElementById('divItemsCart');
     const totalCart = document.getElementById('totalCart');
 
@@ -186,10 +187,12 @@ buttonCart.addEventListener('click', () => {
                 </div>
         `;
     }
+
     /* Evento del input number */
+
     pokeStorageArr.forEach((pok, i) => {
         document.getElementById(`quantityCart${pok.id}`).addEventListener('input', (e)=>{
-            cartArr[i].quant = parseFloat(e.data);
+            cartArr[i].quant = parseFloat(e.originalTarget.value);
             localStorage.setItem('cartStorage', JSON.stringify(cartArr));
             document.getElementById(`pokPrice${i}`).innerHTML =  cartArr[i].quant * cartArr[i].price;
             totalCart.innerHTML = `

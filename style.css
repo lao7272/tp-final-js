@@ -55,6 +55,7 @@ a{
 }
 .buttonCart i {
     color: #000;
+    padding: 5px;
 }
 /* MAIN */
 .containerPokemons{
@@ -178,7 +179,7 @@ a{
     background: none;
     border: none;
     color: #000;
-    width: 35px;
+    width: 10%;
     outline:none;
 } 
 .cartDelete{
@@ -239,4 +240,24 @@ a{
 }
 
 
+/* Media query */
 
+@media screen and (min-width: 300px) and (max-width: 576px) {
+    .quantityCart{
+        background: none;
+        border: none;
+        color: #000;
+        width: 20%;
+        outline:none;
+    } 
+}
+
+@media screen and (min-width: 577px) and (max-width: 1024px) {
+    .quantityCart{
+        background: none;
+        border: none;
+        color: #000;
+        width: 23%;
+        outline:none;
+    } 
+}
